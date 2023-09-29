@@ -16,14 +16,51 @@ public class Main2 {
     
     //Creamos los metodos de funcionalidades
     
-    static void agregarEmpleado(Empleado objempelado)
+    static ArrayList agregarEmpleado(int numero_Empleado)
     {
+        String nombre,codigo;
+        ArrayList empleado_array = new ArrayList();
+        int ano_ingreso;
+        Empleado objemEmpleado;
+        int opcion;
+        Scanner scan;
+        
+        //iteramos sobre la cantidad de clientes agregamos a una lista y enviamos a la funcion agregar
+                    for (int i = 0; i < numero_Empleado; i++) {
+                        System.out.println("Ingresa el nombre del empleado");
+                        scan = resetScan();
+                        nombre = scan.nextLine();
+                        System.out.println("Ingresa codigo del empleado");
+                        scan = resetScan();
+                        codigo = scan.nextLine();
+                        System.out.println("Ingresa el nombre del ano_ingreso");
+                        scan = resetScan();
+                        ano_ingreso = scan.nextInt();
+                        objemEmpleado= new Empleado(nombre, codigo, ano_ingreso);
+                        empleado_array.add(objemEmpleado);
+                          
+                    } 
+                    
+                    return empleado_array;
        
         
     }
     static Scanner resetScan(){
         Scanner scan = new Scanner(System.in);
         return scan;
+        
+    }
+    static int validad_numeros_negativos(int numero){
+        try {
+         
+            if (numero<0) {
+                numero=numero*-1;
+                
+            }
+        } catch (Exception e) {
+        }
+        
+        return numero;
         
     }
     static void eliminarEmpleado(String codigo){
@@ -61,6 +98,7 @@ public class Main2 {
         int ano_ingreso;
         Empleado objemEmpleado;
         int opcion;
+        
         //instanciamos el metodo scan
         Scanner scan = resetScan();
         //llamamos el metodo del menu
@@ -68,34 +106,17 @@ public class Main2 {
         
         try {
             opcion = scan.nextInt();
+            validad_numeros_negativos(opcion);
+            System.out.println("cuantos clientes desea agregar?");
+            numero_Empleado = scan.nextInt();
             switch (opcion) {
                 case 1:
-                    //preguntamos cuantos clientes queremos subir
-                    System.out.println("cuantos clientes desea agregar?");
-                    numero_Empleado = scan.nextInt();
-                    //iteramos sobre la cantidad de clientes agregamos a una lista y enviamos a la funcion agregar
-                    for (int i = 0; i < numero_Empleado; i++) {
-                        System.out.println("Ingresa el nombre del empleado");
-                        scan = resetScan();
-                        nombre = scan.nextLine();
-                        System.out.println("Ingresa codigo del empleado");
-                        scan = resetScan();
-                        codigo = scan.nextLine();
-                        System.out.println("Ingresa el nombre del ano_ingreso");
-                        scan = resetScan();
-                        ano_ingreso = scan.nextInt();
-                        objemEmpleado= new Empleado(nombre, codigo, ano_ingreso);
-                        empleado_array.add(objemEmpleado);
-                        
-
-                        
-                    }
-                   
-
-                    
-                    
+                    empleado_array= agregarEmpleado(numero_Empleado);
+                                    
                     
                     break;
+                case 2:
+                    listarEmpleado();
                 default:
                     throw new AssertionError();
             }
@@ -116,6 +137,10 @@ public class Main2 {
         
         
         
+    }
+
+    private static void listarEmpleado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

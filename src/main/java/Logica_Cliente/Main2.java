@@ -78,6 +78,23 @@ public class Main2 {
         
     }
     static void buscarEmpleado(ArrayList<Empleado> listaempleados,String codigo){
+        Scanner scan = resetScan();
+                        
+                        double startTime = System.currentTimeMillis();
+                        for (int i = 0; i <= listaempleados.size(); i++) {
+                            if(listaempleados.get(i).getCodigo().equals(codigo))
+                            {
+
+                                System.out.println("\n");
+                                System.out.println("Empleado"+"\t"+(i+1));
+                                System.out.println("El nombre del empleado es:"+"\t"+listaempleados.get(i).getNombre());
+                                System.out.println("El codigo del empleado es:"+"\t"+listaempleados.get(i).getCodigo());
+                                System.out.println("El codigo del empleado es:"+"\t"+listaempleados.get(i).getAño_Ingreso());
+
+                            }else{
+                                System.out.println("El empleado no existe");
+                            }
+                            }
         
     }
     static void editarEmpleado(String nombre,String codigo,int Año_Ingreso){
@@ -135,6 +152,11 @@ public class Main2 {
                     listarEmpleado(empleado_array);
                     break;
                 case 3:
+                    System.out.println("Ingresa el codigo del empleado");
+                    scan = resetScan();
+                    String id_empelado = scan.nextLine();
+                    buscarEmpleado(empleado_array, id_empelado);
+                    
                     break;
                 case 4:
                     break; 

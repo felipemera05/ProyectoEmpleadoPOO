@@ -16,15 +16,16 @@ public class Main2 {
     
     //Creamos los metodos de funcionalidades
     
-    static ArrayList agregarEmpleado(int numero_Empleado)
+    static ArrayList agregarEmpleado()
     {
         String nombre,codigo;
         ArrayList empleado_array = new ArrayList();
         int ano_ingreso;
         Empleado objemEmpleado;
         int opcion;
-        Scanner scan;
-        
+        Scanner scan = resetScan();
+        System.out.println("cuantos clientes desea agregar?");
+        int numero_Empleado = scan.nextInt();
         //iteramos sobre la cantidad de clientes agregamos a una lista y enviamos a la funcion agregar
                     for (int i = 0; i < numero_Empleado; i++) {
                         System.out.println("Ingresa el nombre del empleado");
@@ -49,6 +50,16 @@ public class Main2 {
         Scanner scan = new Scanner(System.in);
         return scan;
         
+    }
+     private static void listarEmpleado(ArrayList<Empleado> listaempleados) {
+         Empleado objemEmpleado= new Empleado();
+         for (int i = 0; i < listaempleados.size(); i++) {
+                                System.out.println("\n");
+                                System.out.println("Empleado"+"\t"+(i+1));
+                                System.out.println("El nombre del empleado es:"+"\t"+listaempleados.get(i).getNombre());
+                                System.out.println("El codigo del empleado es:"+"\t"+listaempleados.get(i).getCodigo());
+                                System.out.println("El año de ingreso del empleado es:"+"\t"+listaempleados.get(i).getAño_Ingreso());
+                            }
     }
     static int validad_numeros_negativos(int numero){
         try {
@@ -97,31 +108,38 @@ public class Main2 {
         ArrayList empleado_array = new ArrayList();
         int ano_ingreso;
         Empleado objemEmpleado;
+        
         int opcion;
         
         //instanciamos el metodo scan
         Scanner scan = resetScan();
         //llamamos el metodo del menu
-        menuEmpleado();
-        
+        System.out.println("cuantas veces desea ver el menu?");
+        int numero_menu = scan.nextInt();
+        numero_menu=validad_numeros_negativos(numero_menu);
+        for (int i = 0; i <numero_menu ; i++) {
+            menuEmpleado();
+            opcion=0;
         try {
             opcion = scan.nextInt();
-            validad_numeros_negativos(opcion);
-            System.out.println("cuantos clientes desea agregar?");
-            numero_Empleado = scan.nextInt();
+            validad_numeros_negativos(opcion);           
+            
             switch (opcion) {
                 case 1:
-                    empleado_array= agregarEmpleado(numero_Empleado);
+                    empleado_array= agregarEmpleado();
                                     
                     
                     break;
                 case 2:
-                    listarEmpleado();
+                    listarEmpleado(empleado_array);
+                    break;
                 default:
                     throw new AssertionError();
             }
         } catch (Exception e) {
             System.out.println("Opción no valida.");
+        }
+            
         }
         
         
@@ -139,9 +157,7 @@ public class Main2 {
         
     }
 
-    private static void listarEmpleado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
     
     
 }

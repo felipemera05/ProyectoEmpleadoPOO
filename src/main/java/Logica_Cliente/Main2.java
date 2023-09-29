@@ -74,8 +74,23 @@ public class Main2 {
         return numero;
         
     }
-    static void eliminarEmpleado(String codigo){
-        
+    static void eliminarEmpleado(ArrayList<Empleado> listaempleado, String codigo){
+     
+      
+                        
+                        double startTime = System.currentTimeMillis();
+                        for (int i = 0; i < listaempleado.size(); i++) {
+                            if(listaempleado.get(i).getCodigo().equals(codigo))
+                            {
+
+                                System.out.println("\n");
+                                System.out.println("Empleado"+"\t"+(i+1));
+                                System.out.println("El nombre del empleado es:"+"\t"+listaempleado.get(i).getNombre());
+                                System.out.println("El codigo del empleado es:"+"\t"+listaempleado.get(i).getCodigo());
+                                System.out.println("El codigo del empleado es:"+"\t"+ listaempleado.get(i).getAño_Ingreso());
+
+                            }
+                            }
     }
     static void buscarEmpleado(ArrayList<Empleado> listaempleados,String codigo){
         Scanner scan = resetScan();
@@ -159,6 +174,12 @@ public class Main2 {
                     
                     break;
                 case 4:
+                    System.out.println("Ingresa el codigo del empleado que deseas elominar");
+                     scan = resetScan();
+                     String Codigo_Eliminar_Emplado = scan.nextLine();
+                    eliminarEmpleado(empleado_array,Codigo_Eliminar_Emplado);
+                    
+                    
                     break; 
                 case 5:
                     break;    
@@ -170,6 +191,8 @@ public class Main2 {
                     System.out.println("Opción invalida por favor ingresa otra opción dentro del menú");
                     break;
             }
+            
+            
         } catch (Exception e) {
             System.out.println("Opción no valida.");
         }

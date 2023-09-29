@@ -34,7 +34,7 @@ public class Main2 {
                         System.out.println("Ingresa codigo del empleado");
                         scan = resetScan();
                         codigo = scan.nextLine();
-                        System.out.println("Ingresa el nombre del ano_ingreso");
+                        System.out.println("Ingresa el ano_ingreso");
                         scan = resetScan();
                         ano_ingreso = scan.nextInt();
                         objemEmpleado= new Empleado(nombre, codigo, ano_ingreso);
@@ -77,7 +77,7 @@ public class Main2 {
     static void eliminarEmpleado(String codigo){
         
     }
-    static void buscarEmpleado(String codigo){
+    static void buscarEmpleado(ArrayList<Empleado> listaempleados,String codigo){
         
     }
     static void editarEmpleado(String nombre,String codigo,int Año_Ingreso){
@@ -93,7 +93,9 @@ public class Main2 {
 
             System.out.println("3.Buscar Empelado\n");
             System.out.println("4.Eliminar Empelado\n");
-            System.out.println("5.Editar Empleado Empelado\n");            
+            System.out.println("5.Editar Empleado Empelado\n");  
+            System.out.println("6.Salir\n");            
+
             System.out.println("**************************************************************\n");
 
             
@@ -107,6 +109,7 @@ public class Main2 {
         int numero_Empleado;
         ArrayList empleado_array = new ArrayList();
         int ano_ingreso;
+        boolean menu = true;
         Empleado objemEmpleado;
         
         int opcion;
@@ -114,10 +117,8 @@ public class Main2 {
         //instanciamos el metodo scan
         Scanner scan = resetScan();
         //llamamos el metodo del menu
-        System.out.println("cuantas veces desea ver el menu?");
-        int numero_menu = scan.nextInt();
-        numero_menu=validad_numeros_negativos(numero_menu);
-        for (int i = 0; i <numero_menu ; i++) {
+       
+        do {
             menuEmpleado();
             opcion=0;
         try {
@@ -133,14 +134,26 @@ public class Main2 {
                 case 2:
                     listarEmpleado(empleado_array);
                     break;
+                case 3:
+                    break;
+                case 4:
+                    break; 
+                case 5:
+                    break;    
+                            
+                case 6:
+                   menu =false;
+                    break;
                 default:
-                    throw new AssertionError();
+                    System.out.println("Opción invalida por favor ingresa otra opción dentro del menú");
+                    break;
             }
         } catch (Exception e) {
             System.out.println("Opción no valida.");
         }
             
-        }
+            
+        } while (menu);
         
         
         

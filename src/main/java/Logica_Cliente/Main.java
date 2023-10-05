@@ -18,8 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
         //declaracion de variables
-        String Nombre= "";
-        String Codigo= "";
+        String Nombre="";
+        String Codigo="";
         int Año_Ingreso= 0;
         int Año_Actual= 2023; 
         int Resultado=0;
